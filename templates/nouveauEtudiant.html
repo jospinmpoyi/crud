@@ -1,0 +1,57 @@
+{% extends "layouts/layout.html" %}
+{% block content%}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Etudiant</h1>
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Nouveau etudiant</h6>
+        </div>
+        <div class="card-body">
+            <form method="post" id="etudiantForm" action="nouveauetudiant">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="nom">Nom</label>
+                        <input type="text" class="form-control" id="nom" name="nom" autocomplete="off" placeholder="Entrer le nom SVP...">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="postnom">Post-Nom</label>
+                        <input type="text" class="form-control" id="postnom" name="postnom"
+                        autocomplete="off"  placeholder="Entrer le post-nom SVP...">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="prenom">Prenom</label>
+                        <input type="text" class="form-control" id="prenom" name="prenom" autocomplete="off" placeholder="Entrer le prenom SVP...">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="telephone">Téléphone</label>
+                        <input type="number" class="form-control" id="telephone" name="telephone"
+                            placeholder="Entrer le n° de Téléphone SVP..." autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="faculte">Faculte</label>
+                    <select id="faculte" name="faculte" class="form-control">
+                        <option selected>-- choisir la faculte svp --</option>
+                        {% for fac in faculte %}
+                        <option value="{{fac.id}}">{{fac.libfac}}</option>
+                        {% endfor %}
+                      </select>
+                </div>
+                 
+              
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}

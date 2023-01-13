@@ -1,0 +1,55 @@
+{% extends "layouts/layout.html" %}
+{% block content%}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Etudiant</h1>
+   
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Liste des Etudiant</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>NOM</th>
+                            <th>POST-NOM</th>
+                            <th>PRENOM</th>
+                            <th>TELEPHONE</th>
+                            <th>FACULTE</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        {% for etud in etudiants %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{etud.nom}}</td>
+                            <td>{{etud.postnom}}</td>
+                            <td>{{etud.prenom}}</td>
+                            <td>{{etud.telephone}}</td>
+                            <td>{{etud.faculte.libfac}}</td>
+                            <td>
+                                <a href="/edit/{{etud.id}}"> <i class="fa fa-pencil"> Modifier</i></a>||
+                                <a href="/supprimer/{{etud.id}}"> <i class="fa fa-pencil">Supprimer</i></a>
+                            </td>
+                        </tr>
+
+                      {% endfor %}
+                   
+                     
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
